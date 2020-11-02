@@ -24,7 +24,8 @@ Run `flutter pub get`
 Import the package to your Dart code
 
 ```dart
-import 'package:logdna/logdna.dart';`
+import 'package:logdna/logdna.dart';
+```
 
 Instantiate the LogDna object
 
