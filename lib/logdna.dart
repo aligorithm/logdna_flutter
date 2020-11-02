@@ -7,16 +7,22 @@ import 'package:http/http.dart' as http;
 import 'models/response.dart';
 
 class LogDNA {
+  /// logdna ingestion key
   final String apiKey;
+
+  /// logdna app name
   final String appName;
+
+  /// logdna hostname
   final String hostName;
-  LogDNA({@required this.apiKey, this.appName, this.hostName});
+  LogDNA({@required this.apiKey, this.appName, @required this.hostName});
 
   //// Sends the log via the logdna ingest API
   Future<DnaResponse> log(DnaLine line) async {
+    var now = DateTime.now().toUtc().millisecondsSinceEpoch;
     try {
       http.Response response = await http.post(
-          'https://logs.logdna.com/logs/ingest?hostname=${this.hostName}&now=now&apikey=${this.apiKey}&appName=${this.appName}',
+          'https://logs.logdna.com/logs/ingest?hostname=${this.hostName}&now=$now&apikey=${this.apiKey}&appName=${this.appName}',
           body: {
             "lines": jsonEncode([line])
           });

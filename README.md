@@ -14,7 +14,7 @@ Add this to your project's `pubspec.yaml` file
 
 ```yaml
 dependencies:
-  logdna: ^0.0.1
+  logdna: ^0.0.2
 ```
 
 Run `flutter pub get`
