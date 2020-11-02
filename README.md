@@ -19,6 +19,7 @@ dependencies:
 
 Run `flutter pub get`
 
+
 ## Usage
 
 Import the package to your Dart code
@@ -26,6 +27,7 @@ Import the package to your Dart code
 ```dart
 import 'package:logdna/logdna.dart';
 ```
+
 
 Instantiate the LogDna object
 
@@ -35,6 +37,7 @@ logDna = LogDNA(
         appName: "APP_NAME",
         hostName: "HOSTNAME");
 ```
+        
         
 Add logs using the logDna object.
 
@@ -50,6 +53,7 @@ logDna.log(DnaLine(
       }
     ));
  ```
+
 
 Alternatively, you can create the log line separately and pass it into the log method.
 
@@ -71,5 +75,6 @@ line = DnaLine(
  ```dart
  line.addCustomField(CustomField(name:"custom name", value: "Custom value"));
  ```
- 
+
+
 You've pushed your log to LogDNA! Check your LogDNA dashboard. Your new log line should appear.
