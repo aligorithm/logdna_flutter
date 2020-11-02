@@ -23,18 +23,22 @@ Run `flutter pub get`
 
 Import the package to your Dart code
 
-`import 'package:logdna/logdna.dart';`
+```dart
+import 'package:logdna/logdna.dart';`
 
 Instantiate the LogDna object
 
-`logDna = LogDNA(
+```dart
+logDna = LogDNA(
         apiKey: "YOUR_API_KEY",
         appName: "APP_NAME",
-        hostName: "HOSTNAME");`
+        hostName: "HOSTNAME");
+```
         
 Add logs using the logDna object.
 
-`    logDna.log(DnaLine(
+```dart
+logDna.log(DnaLine(
       timestamp: DateTime.now().toUtc().millisecondsSinceEpoch.toString(),
       line: "event happened",
       level: DnaLevel.debug,
@@ -43,11 +47,13 @@ Add logs using the logDna object.
         "custom field":"custom value",
         "custom field 2": "custom value 2"
       }
-    ));`
+    ));
+ ```
 
 Alternatively, you can create the log line separately and pass it into the log method.
 
-`line = DnaLine(
+```dart
+line = DnaLine(
       timestamp: DateTime.now().toUtc().millisecondsSinceEpoch.toString(),
       line: "event happened",
       level: DnaLevel.debug,
@@ -56,10 +62,13 @@ Alternatively, you can create the log line separately and pass it into the log m
         "custom field":"custom value",
         "custom field 2": "custom value 2"
       }
-    );`
+    );
+```
     
  You can add custom values after creating the 'DnaLine' instance.
  
- `line.addCustomField(CustomField(name:"custom name", value: "Custom value"));`
+ ```dart
+ line.addCustomField(CustomField(name:"custom name", value: "Custom value"));
+ ```
  
 You've pushed your log to LogDNA! Check your LogDNA dashboard. Your new log line should appear.
