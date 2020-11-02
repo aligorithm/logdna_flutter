@@ -12,6 +12,7 @@ class LogDNA {
   final String hostName;
   LogDNA({@required this.apiKey, this.appName, this.hostName});
 
+  //// Sends the log via the logdna ingest API
   Future<DnaResponse> log(DnaLine line) async {
     try {
       http.Response response = await http.post(

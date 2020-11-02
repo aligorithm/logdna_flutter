@@ -72,6 +72,16 @@ class _MyHomePageState extends State<MyHomePage> {
         "custom field":"custom value"
       }
     ));
+    DnaLine line = DnaLine(
+      timestamp: DateTime.now().toUtc().millisecondsSinceEpoch.toString(),
+      line: "counter incremented",
+      level: DnaLevel.debug,
+      env: DnaEnv.production,
+      meta: {
+        "custom field":"custom value"
+      }
+    );
+
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below

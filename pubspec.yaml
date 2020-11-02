@@ -1,5 +1,5 @@
 name: logdna
-description: A simple logdna client for flutter
+description: A simple logdna client for Flutter. Push logs directly to your LogDNA dashboard in a few lines of code.
 version: 0.0.1
 repository: https://github.com/aligorithm/logdna_flutter
 issue_tracker: https://github.com/aligorithm/logdna_flutter/issues
