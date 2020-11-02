@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:logdna/logdna.dart';
+import 'package:logdna/models/dna_line.dart';
 void main() {
   runApp(MyApp());
 }
@@ -50,15 +51,27 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  LogDNA logDna;
   @override
   void initState() { 
     super.initState();
-    
+        logDna = LogDNA(
+        apiKey: "YOUR_API_KEY",
+        appName: "APP_NAME",
+        hostName: "HOSTNAME");
   }
   int _counter = 0;
 
   void _incrementCounter() {
-
+    logDna.log(DnaLine(
+      timestamp: DateTime.now().toUtc().millisecondsSinceEpoch.toString(),
+      line: "counter incremented",
+      level: DnaLevel.debug,
+      env: DnaEnv.production,
+      meta: {
+        "custom field":"custom value"
+      }
+    ));
     setState(() {
       // This call to setState tells the Flutter framework that something has
       // changed in this State, which causes it to rerun the build method below

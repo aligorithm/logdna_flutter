@@ -1,8 +1,9 @@
 name: logdna
 description: A simple logdna client for flutter
 version: 0.0.1
-author:
-homepage:
+repository: https://github.com/aligorithm/logdna_flutter
+issue_tracker: https://github.com/aligorithm/logdna_flutter/issues
+homepage: https://aligorithm.i.ng
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
