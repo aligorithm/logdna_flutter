@@ -20,44 +20,52 @@ class DnaLine {
   ///WARNING: If inconsistent value types are used, that line's metadata, will not be parsed.
   ///For example, if a line is passed with a meta object, such as meta.myfield of type String, any subsequent lines with meta.myfield must have a String as the value type for meta.myfield.
   ///Source: LogDNA official documentation.
-  Map<String, dynamic> meta;
+  Map<String, dynamic>? meta;
 
-  DnaLine(
-      {this.timestamp, this.line, this.app, this.level, this.env, this.meta});
+  DnaLine({
+    required this.timestamp,
+    required this.line,
+    required this.app,
+    required this.level,
+    required this.env,
+    this.meta,
+  });
 
-  DnaLine.fromJson(Map<String, dynamic> json) {
-    timestamp = json['timestamp'];
-    line = json['line'];
-    app = json['app'];
-    level = json['level'];
-    env = json['env'];
-    meta = json['meta'];
-  }
+  factory DnaLine.fromJson(Map<String, dynamic> json) => DnaLine(
+        timestamp: json['timestamp'],
+        line: json['line'],
+        app: json['app'],
+        level: json['level'],
+        env: json['env'],
+        meta: json['meta'],
+      );
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['timestamp'] = this.timestamp;
-    data['line'] = this.line;
-    data['app'] = this.app;
-    data['level'] = this.level;
-    data['env'] = this.env;
-    if (this.meta != null) {
-      data['meta'] = this.meta;
+    data['timestamp'] = timestamp;
+    data['line'] = line;
+    data['app'] = app;
+    data['level'] = level;
+    data['env'] = env;
+    if (meta != null) {
+      data['meta'] = meta;
     }
     return data;
   }
 
   /// Add a custom field to a log line
   addCustomField(CustomField customField) {
-    if (this.meta == null) this.meta = Map();
-    this.meta.putIfAbsent(customField.name, () => customField.value);
+    if (meta == null) this.meta = Map();
+    meta!.putIfAbsent(customField.name, () => customField.value);
   }
 }
 
 /// A custom field added to the DnaLine. It's passed into the ingestion API under the meta field.
 class CustomField {
-  String name;
-  String value;
+  final String name;
+  final String value;
+
+  CustomField({required this.name, required this.value});
 }
 
 /// DnaLevel is a string indicating the log level. Custom values are allowed.
