@@ -5,14 +5,14 @@ class DnaLine {
   /// Log statement
   String line;
 
-  /// App name
-  String app;
-
   /// Log level (E.g. Debug, Info, Error)
   String level;
 
   /// the current environment of the application.
   String env;
+
+  /// App name
+  String? app;
 
   ///Meta is a field reserved for custom information associated with a log line.
   ///To add metadata to an API call, specify the meta field under the lines object.
@@ -25,9 +25,9 @@ class DnaLine {
   DnaLine({
     required this.timestamp,
     required this.line,
-    required this.app,
     required this.level,
     required this.env,
+    this.app,
     this.meta,
   });
 
@@ -44,9 +44,11 @@ class DnaLine {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['timestamp'] = timestamp;
     data['line'] = line;
-    data['app'] = app;
     data['level'] = level;
     data['env'] = env;
+    if (app != null) {
+      data['app'] = app;
+    }
     if (meta != null) {
       data['meta'] = meta;
     }
