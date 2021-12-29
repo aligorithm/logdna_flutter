@@ -1,4 +1,4 @@
-import 'dart:convert';
+import 'dart:convert' show jsonEncode;
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
@@ -8,15 +8,13 @@ import 'package:logdna/models/dna_line.dart';
 import 'models/response.dart';
 
 class LogDNA {
-  /// logdna ingestion key
+  /// Ingestion key
   final String apiKey;
 
-  /// logdna app name
-  final String appName;
-
-  /// logdna hostname
+  /// The hostname of the source
   final String hostName;
-  LogDNA({required this.apiKey, required this.appName, required this.hostName});
+
+  LogDNA({required this.apiKey, required this.hostName});
 
   //// Sends the log via the logdna ingest API
   Future<DnaResponse> log(DnaLine line) async {
@@ -24,11 +22,12 @@ class LogDNA {
     try {
       final uri =
           Uri.parse("https://logs.logdna.com/logs/ingest?hostname=$hostName"
-              "&now=$now&apikey=$apiKey&appName=$appName");
+              "&now=$now&apikey=$apiKey");
 
-      http.Response response = await http.post(uri, body: {
-        "lines": jsonEncode([line]),
-      });
+      http.Response response = await http.post(uri,
+          body: jsonEncode({
+            "lines": [line]
+          }));
 
       if (response.statusCode == 200) {
         print(true);
