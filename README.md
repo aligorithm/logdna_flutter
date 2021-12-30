@@ -14,7 +14,7 @@ Add this to your project's `pubspec.yaml` file
 
 ```yaml
 dependencies:
-  logdna: ^1.1.1
+  logdna: ^1.1.2
 ```
 
 Run `flutter pub get`
@@ -34,7 +34,6 @@ Instantiate the LogDna object
 ```dart
 logDna = LogDNA(
         apiKey: "YOUR_API_KEY",
-        appName: "APP_NAME",
         hostName: "HOSTNAME");
 ```
         
@@ -46,6 +45,7 @@ logDna.log(DnaLine(
       timestamp: DateTime.now().toUtc().millisecondsSinceEpoch.toString(),
       line: "event happened",
       level: DnaLevel.debug,
+      app "APP NAME"
       env: DnaEnv.production,
       meta: {
         "custom field":"custom value",
@@ -62,6 +62,7 @@ line = DnaLine(
       timestamp: DateTime.now().toUtc().millisecondsSinceEpoch.toString(),
       line: "event happened",
       level: DnaLevel.debug,
+      app: "APP NAME"
       env: DnaEnv.production,
       meta: {
         "custom field":"custom value",
