@@ -27,7 +27,11 @@ class LogDNA {
       http.Response response = await http.post(uri,
           body: jsonEncode({
             "lines": [line]
-          }));
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          });
 
       if (response.statusCode == 200) {
         print(true);
