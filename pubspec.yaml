@@ -9,4 +9,4 @@ environment:
   sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
-  http: ^1.2.1
+  http: ^0.13.4
