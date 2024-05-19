@@ -27,13 +27,13 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Logdna Demo Home Page'),
+      home: MyHomePage(title: 'Logdna Demo Home Page', key: UniqueKey(),),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({required Key key, required this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -51,13 +51,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  LogDNA logDna;
+  late LogDNA logDna;
   @override
   void initState() { 
     super.initState();
         logDna = LogDNA(
         apiKey: "YOUR_API_KEY",
-        appName: "APP_NAME",
         hostName: "HOSTNAME");
   }
   int _counter = 0;
