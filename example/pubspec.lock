@@ -108,7 +108,7 @@ packages:
     source: hosted
     version: "2.0.1"
   logdna:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: logdna
       sha256: "3d67d4216b5d76f89b23b19aadba9315764e91f66b349b02d881265fa8617419"
